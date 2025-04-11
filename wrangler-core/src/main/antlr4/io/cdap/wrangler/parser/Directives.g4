@@ -195,7 +195,30 @@ identifierList
  : Identifier (',' Identifier)*
  ;
 
+BYTE_SIZE
+ : Int ('.' Digit*)? BYTE_UNIT
+ ;
 
+TIME_DURATION
+ : Int ('.' Digit*)? TIME_UNIT
+ ;
+
+fragment BYTE_UNIT
+ : [kK][bB]  // Kilobytes
+ | [mM][bB]  // Megabytes
+ | [gG][bB]  // Gigabytes
+ | [tT][bB]  // Terabytes
+ | [pP][bB]  // Petabytes
+ | [bB]      // Bytes
+ ;
+
+fragment TIME_UNIT
+ : [mM][sS]    // Milliseconds
+ | [sS]        // Seconds
+ | [mM]        // Minutes
+ | [hH]        // Hours
+ | [dD]        // Days
+ ;
 /*
  * Following are the Lexer Rules used for tokenizing the recipe.
  */
